@@ -39,7 +39,6 @@ export function getPixelColor(pathToImage, x, y) {
     const r = png.data[idx];
     const g = png.data[idx + 1];
     const b = png.data[idx + 2];
-    const a = png.data[idx + 3];
 
     return [r, g, b]; // return RGB
 }
