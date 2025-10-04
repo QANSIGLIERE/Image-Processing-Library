@@ -42,3 +42,40 @@ export function getPixelColor(pathToImage, x, y) {
 
     return [r, g, b]; // return RGB
 }
+
+/**
+ * Replace one or more rectangles in a PNG with a given color
+ * @param {string} inputPath - Path to input PNG file
+ * @param {string} outputPath - Path to save modified PNG
+ * @param {Array} rectangles - Array of rectangles [{x, y, width, height}]
+ * @param {Array} color - RGBA color [r,g,b,a] (0–255)
+ * replaceRectangles(
+    './element-00000000-0000-00a0-ffff-ffff000000e6.png',
+    './3.png',
+    [{ x: 10, y: 20, width: 50, height: 30 }],
+    [255, 0, 0, 255]);
+ */
+export function replaceRectangles(inputPath, outputPath, rectangles, color) {
+    const buffer = fs.readFileSync(inputPath);
+    const png = PNG.sync.read(buffer);
+
+    for (const rect of rectangles) {
+        const { x, y, width, height } = rect;
+
+        for (let j = y; j < y + height; j++) {
+            for (let i = x; i < x + width; i++) {
+                if (i < 0 || j < 0 || i >= png.width || j >= png.height) continue;
+
+                const idx = (png.width * j + i) << 2;
+
+                png.data[idx] = color[0]; // R
+                png.data[idx + 1] = color[1]; // G
+                png.data[idx + 2] = color[2]; // B
+                png.data[idx + 3] = color[3]; // A
+            }
+        }
+    }
+
+    const newBuffer = PNG.sync.write(png);
+    fs.writeFileSync(outputPath, newBuffer);
+}

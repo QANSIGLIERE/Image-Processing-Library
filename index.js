@@ -1,1 +1,1 @@
-import { saveBase64AsImage, compare2Images, getPixelColor } from './library/library.js';
+import { saveBase64AsImage, compare2Images, getPixelColor, replaceRectangles } from './library/library.js';
