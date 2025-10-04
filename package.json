@@ -1,0 +1,28 @@
+{
+  "name": "qansigliere-image-processing-library",
+  "version": "0.0.1",
+  "description": "The main idea of ​​this library, created in JavaScript, is to provide a ready-made set of methods for image processing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QANSIGLIERE/Image-Processing-Library.git"
+  },
+  "keywords": [
+    "qansigliere",
+    "javascript",
+    "js",
+    "png",
+    "image",
+    "processing",
+    "compare"
+  ],
+  "author": "qansigliere@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QANSIGLIERE/Image-Processing-Library/issues"
+  },
+  "homepage": "https://github.com/QANSIGLIERE/Image-Processing-Library#readme"
+}
