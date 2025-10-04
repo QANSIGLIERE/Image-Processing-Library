@@ -23,3 +23,22 @@ export function compare2Images(imagePath1, imagePath2, pathToDifferenceFolder) {
     fs.writeFileSync(`${pathToDifferenceFolder}/${diffFileName}.PNG`, PNG.sync.write(diff));
     return numberOfDifferentPixels;
 }
+
+export function getPixelColor(pathToImage, x, y) {
+    // Read file synchronously
+    const buffer = fs.readFileSync(pathToImage);
+
+    // Decode PNG synchronously
+    const png = PNG.sync.read(buffer);
+
+    if (x >= png.width || y >= png.height) {
+        throw new Error('Pixel coordinates are out of bounds!');
+    }
+
+    const idx = (png.width * y + x) << 2;
+    const r = png.data[idx];
+    const g = png.data[idx + 1];
+    const b = png.data[idx + 2];
+
+    return [r, g, b]; // return RGB
+}
