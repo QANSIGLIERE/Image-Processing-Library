@@ -20,6 +20,8 @@ Using npm: `npm i qansigliere-image-processing-library`
 -   `compare2Images(imagePath1, imagePath2, pathToDifferenceFolder)` - it compares two different or similar .PNG images
     with the same resolution, generates a file with different pixes and returns a number of the different pixels
 -   `getPixelColor(pathToImage, x, y)` - it returns [R, G, B] color of any specific pixel for the provided image
+-   `replaceRectangles(inputPath, outputPath, rectangles, color)` - it will replace any rectangles on the image by
+    provided color
 
 ## Related Videos
 
