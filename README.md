@@ -16,7 +16,9 @@ Using npm: `npm i qansigliere-image-processing-library`
 
 ## Functions
 
--
+-   `saveBase64AsImage(base64String, fullPathToFile)` - it allows us to save a base64 string as a .PNG image
+-   `compare2Images(imagePath1, imagePath2, pathToDifferenceFolder)` - it compares two different or similar .PNG images
+    with the same resolution, generates a file with different pixes and returns a number of the different pixels
 
 ## Related Videos
 
