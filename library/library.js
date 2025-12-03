@@ -43,6 +43,25 @@ export function getPixelColor(pathToImage, x, y) {
     return [r, g, b]; // return RGB
 }
 
+export function getColorsFromImage(pathToImage) {
+    const buffer = fs.readFileSync(pathToImage);
+
+    // Decode PNG synchronously
+    const png = PNG.sync.read(buffer);
+
+    const { data } = png;
+    const colors = new Set();
+
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        colors.add(`${r},${g},${b}`);
+    }
+
+    return colors;
+}
+
 /**
  * Replace one or more rectangles in a PNG with a given color
  * @param {string} inputPath - Path to input PNG file
