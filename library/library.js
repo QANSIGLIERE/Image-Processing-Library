@@ -43,7 +43,7 @@ export function getPixelColor(pathToImage, x, y) {
     return [r, g, b]; // return RGB
 }
 
-export function getColorsFromImage(pathToImage) {
+export function getColorsArrayFromImage(pathToImage) {
     const buffer = fs.readFileSync(pathToImage);
 
     // Decode PNG synchronously
@@ -59,7 +59,34 @@ export function getColorsFromImage(pathToImage) {
         colors.add(`${r},${g},${b}`);
     }
 
-    return colors;
+    return Array.from(colors).sort();
+}
+
+export function getColorsAndPixelsArrayFromImage(pathToImage) {
+    const buffer = fs.readFileSync(pathToImage);
+
+    // Decode PNG synchronously
+    const png = PNG.sync.read(buffer);
+
+    const { data } = png;
+    const stats = new Map();
+
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        const key = `${r},${g},${b}`;
+
+        stats.set(key, (stats.get(key) || 0) + 1);
+    }
+
+    const result = [...stats.entries()].map(([color, pixels]) => ({
+        color,
+        pixels,
+    }));
+
+    return Array.from(result).sort((a, b) => b.pixels - a.pixels);
 }
 
 /**

@@ -20,7 +20,10 @@ Using npm: `npm i qansigliere-image-processing-library`
 -   `compare2Images(imagePath1, imagePath2, pathToDifferenceFolder)` - it compares two different or similar .PNG images
     with the same resolution, generates a file with different pixes and returns a number of the different pixels
 -   `getPixelColor(pathToImage, x, y)` - it returns [R, G, B] color of any specific pixel for the provided image
--   `getColorsFromImage(pathToImage)` - it returns a set of all [R, G, B] colors of any specific provided image
+-   `getColorsArrayFromImage(pathToImage)` - it returns a sorted array of all [R, G, B] colors of any specific provided
+    image
+-   `getColorsAndPixelsArrayFromImage(pathToImage)` - it returns a sorted array of objects like {'color': ..., 'pixels':
+    ... } of any specific provided image
 -   `replaceRectangles(inputPath, outputPath, rectangles, color)` - it will replace any rectangles on the image by
     provided color
 
