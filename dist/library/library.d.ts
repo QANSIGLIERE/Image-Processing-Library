@@ -1,7 +1,8 @@
 export function saveBase64AsImage(base64String: any, fullPathToFile: any): void;
 export function compare2Images(imagePath1: any, imagePath2: any, pathToDifferenceFolder: any): number;
 export function getPixelColor(pathToImage: any, x: any, y: any): any[];
-export function getColorsFromImage(pathToImage: any): any;
+export function getColorsArrayFromImage(pathToImage: any): any;
+export function getColorsAndPixelsArrayFromImage(pathToImage: any): any;
 /**
  * Replace one or more rectangles in a PNG with a given color
  * @param {string} inputPath - Path to input PNG file

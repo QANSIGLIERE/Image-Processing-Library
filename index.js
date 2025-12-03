@@ -3,7 +3,15 @@ import {
     compare2Images,
     getPixelColor,
     replaceRectangles,
-    getColorsFromImage,
+    getColorsArrayFromImage,
+    getColorsAndPixelsArrayFromImage,
 } from './library/library.js';
 
-export { saveBase64AsImage, compare2Images, getPixelColor, replaceRectangles, getColorsFromImage };
+export {
+    saveBase64AsImage,
+    compare2Images,
+    getPixelColor,
+    replaceRectangles,
+    getColorsArrayFromImage,
+    getColorsAndPixelsArrayFromImage,
+};
