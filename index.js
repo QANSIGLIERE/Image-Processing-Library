@@ -5,6 +5,7 @@ import {
     replaceRectangles,
     getColorsArrayFromImage,
     getColorsAndPixelsArrayFromImage,
+    getTopFiveColors,
 } from './library/library.js';
 
 export {
@@ -14,4 +15,5 @@ export {
     replaceRectangles,
     getColorsArrayFromImage,
     getColorsAndPixelsArrayFromImage,
+    getTopFiveColors,
 };
