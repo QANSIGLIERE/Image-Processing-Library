@@ -1,6 +1,6 @@
 {
   "name": "qansigliere-image-processing-library",
-  "version": "2025.12.03",
+  "version": "2026.01.14",
   "description": "The main idea of ​​this library, created in JavaScript, is to provide a ready-made set of methods for image processing",
   "main": "index.js",
   "type": "module",

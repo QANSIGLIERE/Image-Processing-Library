@@ -23,7 +23,8 @@ Using npm: `npm i qansigliere-image-processing-library`
 -   `getColorsArrayFromImage(pathToImage)` - it returns a sorted array of all [R, G, B] colors of any specific provided
     image
 -   `getColorsAndPixelsArrayFromImage(pathToImage)` - it returns a sorted array of objects like {'color': ..., 'pixels':
-    ... } of any specific provided image
+    ..., 'percent': ... } of any specific provided image.
+-   `getTopFiveColors(pathToImage)` - it returns the first five colors sorted by number of related pixels
 -   `replaceRectangles(inputPath, outputPath, rectangles, color)` - it will replace any rectangles on the image by
     provided color
 

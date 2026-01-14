@@ -84,9 +84,14 @@ export function getColorsAndPixelsArrayFromImage(pathToImage) {
     const result = [...stats.entries()].map(([color, pixels]) => ({
         color,
         pixels,
+        percent: (pixels / (png.height * png.width)) * 100,
     }));
 
     return Array.from(result).sort((a, b) => b.pixels - a.pixels);
+}
+
+export function getTopFiveColors(pathToImage) {
+    return getColorsAndPixelsArrayFromImage(pathToImage).slice(0, 5);
 }
 
 /**
