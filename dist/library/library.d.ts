@@ -1,5 +1,8 @@
 export function saveBase64AsImage(base64String: any, fullPathToFile: any): void;
-export function compare2Images(imagePath1: any, imagePath2: any, pathToDifferenceFolder: any): number;
+export function compare2Images(imagePath1: any, imagePath2: any, pathToDifferenceFolder: any): {
+    differentPixels: number;
+    percent: number;
+};
 export function getPixelColor(pathToImage: any, x: any, y: any): any[];
 export function getColorsArrayFromImage(pathToImage: any): any;
 export function getColorsAndPixelsArrayFromImage(pathToImage: any): any;

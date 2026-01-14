@@ -3,6 +3,10 @@ import { PNG } from 'pngjs';
 import pixelmatch from 'pixelmatch';
 import { v4 as uuidv4 } from 'uuid';
 
+function calculatePercentValue(numberOfPixels, imagewidth, imageHeight) {
+    return (numberOfPixels / (imagewidth * imageHeight)) * 100;
+}
+
 export function saveBase64AsImage(base64String, fullPathToFile) {
     fs.writeFile(fullPathToFile, base64String, { encoding: 'base64' }, err => {
         if (err) throw err;
@@ -21,7 +25,10 @@ export function compare2Images(imagePath1, imagePath2, pathToDifferenceFolder) {
     let diffFileName = uuidv4();
     console.log(`The file with difference can be found here: ${pathToDifferenceFolder}/${diffFileName}.PNG`);
     fs.writeFileSync(`${pathToDifferenceFolder}/${diffFileName}.PNG`, PNG.sync.write(diff));
-    return numberOfDifferentPixels;
+    return {
+        differentPixels: numberOfDifferentPixels,
+        percent: calculatePercentValue(numberOfDifferentPixels, width, height),
+    };
 }
 
 export function getPixelColor(pathToImage, x, y) {
@@ -84,7 +91,7 @@ export function getColorsAndPixelsArrayFromImage(pathToImage) {
     const result = [...stats.entries()].map(([color, pixels]) => ({
         color,
         pixels,
-        percent: (pixels / (png.height * png.width)) * 100,
+        percent: calculatePercentValue(pixels, png.width, png.height),
     }));
 
     return Array.from(result).sort((a, b) => b.pixels - a.pixels);
