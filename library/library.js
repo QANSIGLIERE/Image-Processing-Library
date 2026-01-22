@@ -15,6 +15,9 @@ export function saveBase64AsImage(base64String, fullPathToFile) {
 }
 
 export function compare2Images(imagePath1, imagePath2, pathToDifferenceFolder) {
+    let diffFileName = uuidv4();
+    const pathToFile = `${pathToDifferenceFolder}/${diffFileName}.PNG`;
+
     const img1 = PNG.sync.read(fs.readFileSync(imagePath1));
     const img2 = PNG.sync.read(fs.readFileSync(imagePath2));
 
@@ -22,10 +25,12 @@ export function compare2Images(imagePath1, imagePath2, pathToDifferenceFolder) {
     const diff = new PNG({ width, height });
 
     let numberOfDifferentPixels = pixelmatch(img1.data, img2.data, diff.data, width, height, { threshold: 0.1 });
-    let diffFileName = uuidv4();
-    console.log(`The file with difference can be found here: ${pathToDifferenceFolder}/${diffFileName}.PNG`);
-    fs.writeFileSync(`${pathToDifferenceFolder}/${diffFileName}.PNG`, PNG.sync.write(diff));
+
+    console.log(`The file with difference can be found here: ${pathToFile}`);
+    fs.writeFileSync(pathToFile, PNG.sync.write(diff));
+
     return {
+        file: pathToFile,
         differentPixels: numberOfDifferentPixels,
         percent: calculatePercentValue(numberOfDifferentPixels, width, height),
     };

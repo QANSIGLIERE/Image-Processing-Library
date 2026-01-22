@@ -18,8 +18,9 @@ Using npm: `npm i qansigliere-image-processing-library`
 
 -   `saveBase64AsImage(base64String, fullPathToFile)` - it allows us to save a base64 string as a .PNG image
 -   `compare2Images(imagePath1, imagePath2, pathToDifferenceFolder)` - it compares two different or similar .PNG images
-    with the same resolution, generates a file with different pixes and returns a number of the different pixels and
-    percentage of the entire image
+    with the same resolution, generates a file with different pixes. The function returns an object like { file: the
+    file with different pixels, differentPixels: the number of different pixels, percent: the percentage of different
+    pixels in the entire image }
 -   `getPixelColor(pathToImage, x, y)` - it returns [R, G, B] color of any specific pixel for the provided image
 -   `getColorsArrayFromImage(pathToImage)` - it returns a sorted array of all [R, G, B] colors of any specific provided
     image
