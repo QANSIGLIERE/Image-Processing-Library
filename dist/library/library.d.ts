@@ -1,5 +1,6 @@
 export function saveBase64AsImage(base64String: any, fullPathToFile: any): void;
 export function compare2Images(imagePath1: any, imagePath2: any, pathToDifferenceFolder: any): {
+    file: string;
     differentPixels: number;
     percent: number;
 };
